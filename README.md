@@ -75,3 +75,12 @@ electron -v
 ```
 electron .
 ```
+
+
+### 3.打包
+
+执行如下命令，进行linux打包，
+
+```
+npm run packageLinux
+```
