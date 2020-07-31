@@ -43,9 +43,8 @@ function createWindow() {
 
     // mainWindow.loadFile('index.html')
     // 改为使用loadURL加载飞书地址
-    mainWindow.loadURL('https://feishu.cn/messenger/', {
+    mainWindow.loadURL('https://larksuite.com/messenger/', {
         userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36'
-        // userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.158 Electron/8.2.0 Safari/537.36"
     })
     webContents = mainWindow.webContents
     mainWindow.on('closed', function () {
@@ -80,15 +79,12 @@ function createWindow() {
 
     // 设置新窗口的 user agent
     webContents.on("new-window", function(event, url, frameName, disposition, options, features, referer){
-        // feishu.cn/calendar/ 日历
-        // feishu.cn/space/home/ 文档
-        // console.log("打开 url " + url)
+        console.log("打开 url " + url)
         event.preventDefault()
+        console.log(url.indexOf("larksuite.com"))
 
-        // hack 所有新页面的打开
         // 如果是跳转外部连接的话， 用默认浏览器打开
-        if(url.indexOf("https://security.feishu.cn/link/safety?target=") == 0){
-            url = url.replace("https://security.feishu.cn/link/safety?target=", "")
+        if(url.indexOf("larksuite.com") === -1){
             url = decodeURIComponent(url);
             shell.openExternal(url)
             return;
@@ -96,8 +92,8 @@ function createWindow() {
             // 如果不是跳转到外部的链接
             // 将所有打开的新页面的 user agent 也重新设置，避免提示浏览器错误
             const win = new BrowserWindow({
-                width: 1200,
-                height: 600,
+                width: 1000,
+                height: 770,
               webContents: options.webContents,
               show: false
             })
@@ -109,7 +105,6 @@ function createWindow() {
             }
             event.newGuest = win;
         }
-
     })
 
     // 打开开发者模式

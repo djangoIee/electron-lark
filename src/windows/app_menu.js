@@ -8,34 +8,6 @@ let template = [
     {
         label: '操作',
         submenu: [
-            // {
-            //     label: '复制',
-            //     accelerator: 'CmdOrCtrl+C',
-            //     role: 'copy'
-            // }, 
-            // {
-            //     label: '粘贴',
-            //     accelerator: 'CmdOrCtrl+V',
-            //     role: 'paste'
-            // }, 
-            // {
-            //     label: '重新加载',
-            //     accelerator: 'CmdOrCtrl+R',
-            //     click: function (item, focusedWindow) {
-            //         if (focusedWindow) {
-            //             // on reload, start fresh and close any old
-            //             // open secondary windows
-            //             if (focusedWindow.id === 1) {
-            //                 BrowserWindow.getAllWindows().forEach(function (win) {
-            //                     if (win.id > 1) {
-            //                         win.close()
-            //                     }
-            //                 })
-            //             }
-            //             focusedWindow.reload()
-            //         }
-            //     }
-            // }
         ]
     },
     {
@@ -115,24 +87,6 @@ function addUpdateMenuItems (electron , items, position) {
     items.splice.apply(items, [position, 0].concat(updateItems))
 }
 
-// function findReopenMenuItem() {
-//     const menu = Menu.getApplicationMenu()
-//     if (!menu) return
-
-//     let reopenMenuItem
-//     menu.items.forEach(function (item) {
-//         if (item.submenu) {
-//             item.submenu.items.forEach(function (item) {
-//                 if (item.key === 'reopenMenuItem') {
-//                     reopenMenuItem = item
-//                 }
-//             })
-//         }
-//     })
-//     return reopenMenuItem
-// }
-
-
 
 
 class AppMenu{
@@ -146,16 +100,6 @@ AppMenu.prototype.init = function( electron ){
         addUpdateMenuItems(electron, helpMenu, 0)
     }
 
-    // template.unshift({
-    //     label: "飞书",
-    //     submenu: [{
-    //         label: 'Quit ( 退出 )',
-    //         accelerator: 'Command+Q',
-    //         click: function () {
-    //             electron.app.quit()
-    //         }
-    //     }]
-    // })
     template[0].submenu.push({
         label: '退出',
         // accelerator: 'Command+Q',
